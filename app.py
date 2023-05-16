@@ -116,8 +116,9 @@ def signup():
         uname=request.form.get('username')
         passd=request.form.get('password')
         email=request.form.get('email')
+        location = request.values.get('location')
         if uname not in [i.username for i in Users.query.all()] and email_valid(email):
-            user_datastore.create_user(username=uname,email=email, password=hash_password(passd))
+            user_datastore.create_user(username=uname,email=email,location=location, password=hash_password(passd))
             db.session.commit()
             return login()
         return render_template('notfound.html',error="invalid email")
@@ -145,7 +146,6 @@ def add_device():
     try:
         secret= request.values.get('secret')
         name = request.values.get('name')
-        location = request.values.get('location')
         user_id = current_user.id
         if len(secret)!=8:
             return render_template('add_device.html', {
@@ -153,7 +153,6 @@ def add_device():
         })
         device = Device()
         device.name = name
-        device.location = location
         device.secret=secret
         device.user_id=user_id
         db.session.add(device)

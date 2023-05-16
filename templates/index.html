@@ -144,71 +144,29 @@ a {
 {% endblock %}
 {% block body %}
 <!-- Sidebar -->
-<div id="main container-fluid">
-  <div class="row d-flex">
-    <nav
-      id="sidebarMenu"
-      class=" border col-md-3 col-lg-2 d-md-block sidebar collapse"
-    >
-      <div align="center">
-        <a
-          href="#"
-          class="d-flex justify-content-center pt-4 pb-3 link-dark text-decoration-none border-bottom"
-        >
-          <span class="fs-4 fw-semibold">Menu</span>
-        </a>
-        <ul class="list-unstyled ps-0">
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-left rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#dashboard-collapse"
-              aria-expanded="true"
-            >
-              Dashboard
-            </button>
-            <div class="collapse show" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <a href="#" class="link-dark rounded">Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" class="link-dark rounded">Register</a>
-                </li>
-
-                <li>
-                  <a href="#" class="link-dark rounded">Appliance</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#account-collapse"
-              aria-expanded="false"
-            >
-              Account settings
-            </button>
-            <div class="collapse" id="account-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <router-link to="/signup"> New...</router-link>
-                </li>
-                <li>
-                  <router-link to="/profile"> Profile</router-link>
-                </li>
-                <li>
-                  <a @click="signout" class="link-dark rounded">Sign out</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<div
+class="offcanvas offcanvas-top bg-primary text-white z-1"
+tabindex="0"
+data-bs-backdrop="false"
+id="offcanvasTop"
+aria-labelledby="offcanvasTopLabel"
+style="height: min-content; top: 56px"
+>
+<ul class="nav nav-tabs bg-primary navbar-dark">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Dashboard</a>
+  </li>
+  <li class="nav-item">
+      <a href="{{ url_for('create_device') }}" class="btn btn-success px-4 gap-3">Add new device</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white">Disabled</a>
+  </li>
+</ul>
+</div>
     <!-- End sidebar -->
 
 {% block content %}{% endblock %}

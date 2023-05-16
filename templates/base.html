@@ -16,26 +16,67 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-          Envision IoT
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mb-2 mb-md-0 ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="true">Azure Docs</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown07XL" data-bs-popper="none">
-                <li><a class="dropdown-item" target="_blank" href="https://docs.microsoft.com/azure">Azure Docs Home</a></li>
-                <li><a class="dropdown-item" target="_blank" href="#">Python Web App + Database Tutorial</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://azure.microsoft.com/develop/python/">Python on Azure</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://docs.microsoft.com/azure/developer/python">Python on Azure Developer Center</a></li>
-              </ul>
-            </li>
+    <nav class="navbar fixed-top bg-primary navbar-dark z-2">
+      <div class="container-fluid justify-content-between">
+        <div class="d-flex">
+          <button
+            class="btn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop"
+            aria-controls="offcanvasTop"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <a class="navbar-brand align-self-center ms-2" href="#"
+            >Envision IOT</a
+          >
+        </div>
+
+        <!-- <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form> -->
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary bg-primary border-0"
+            type="button"
+            data-bs-toggle="dropdown"
+            data-bs-offset="10,20"
+            aria-expanded="false"
+          >
+            Profile
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+          </button>
+
+          <ul
+            class="dropdown-menu dropdown-menu-end border-primary"
+            style="top: 120%"
+          >
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider bg-primary" /></li>
+            <li><a class="dropdown-item" href="#">Log Out</a></li>
           </ul>
         </div>
       </div>
