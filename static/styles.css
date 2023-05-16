@@ -364,4 +364,13 @@ p {
     position: absolute;
     text-align: center;
     top: 15%;
+    color:white;
+}
+
+label{
+    color:white;
+}
+
+#hg{
+    color: white;
 }
