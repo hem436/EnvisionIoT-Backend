@@ -110,6 +110,12 @@ def login():
     else:
         return render_template('login.html')
 #---------------------------
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     if request.method=='POST':
@@ -127,7 +133,11 @@ def signup():
 @app.route('/index', methods=['GET'])
 def index():
     print('Request for index page received')
-    devices = Device.query.all()
+    try:
+        devices = Device.query.filter(Device.user_id==current_user.id).all()
+    except Exception as e:
+        print(e)
+        return render_template('errors.html',)
     return render_template('devices.html', devices=devices)
 
 @app.route('/<int:id>', methods=['GET'])
@@ -148,9 +158,7 @@ def add_device():
         name = request.values.get('name')
         user_id = current_user.id
         if len(secret)!=8:
-            return render_template('add_device.html', {
-            'error_message': "You must include a device name, address, and description",
-        })
+            return render_template('errors.html',error_message= "You must include a room name and device secret key")
         device = Device()
         device.name = name
         device.secret=secret

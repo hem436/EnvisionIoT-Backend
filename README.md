@@ -38,14 +38,14 @@ Steps for running the server:
     ```
 
 3. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the Dev Container, copy the values from 
-'''
-FLASK_DEBUG=True
-DBNAME=app
-DBHOST=localhost
-DBUSER=app_user
-DBPASS=app_password
-SECRET_KEY=flask-insecure-secret-key
-'''
+    ```
+    FLASK_DEBUG=True
+    DBNAME=app
+    DBHOST=localhost
+    DBUSER=app_user
+    DBPASS=app_password
+    SECRET_KEY=flask-insecure-secret-key
+    ```
 
 4. Run db stamp
 
@@ -63,7 +63,11 @@ SECRET_KEY=flask-insecure-secret-key
 6. Run the local server: (or use VS Code "Run" button and select "Run server")
 
     ```shell
-    python3 -m flask run
+    python3 app.py
+    ```
+    For production use command 
+    ```
+    gunicorn --worker-class eventlet -w 1 app:app
     ```
 
 ### Deployment
