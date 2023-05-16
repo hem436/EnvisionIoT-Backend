@@ -362,7 +362,7 @@ p {
 
 #highlight{
     position: absolute;
-    text-align: center;
+    font-weight: 700;
     top: 15%;
     color:white;
 }
