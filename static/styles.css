@@ -169,6 +169,8 @@ section#about .details h2 {
     border-radius: 10px 0 10px 0;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     padding: 1em;
+    position: absolute;
+    top: 25%;
 }
 
 .card h3 {
@@ -350,4 +352,16 @@ p {
 .appliances {
     width: 50px;
     padding: 15px;
+}
+
+.signupform{
+    align-items: center;
+    position: absolute;
+    top: 25%;
+}
+
+#highlight{
+    position: absolute;
+    text-align: center;
+    top: 15%;
 }
