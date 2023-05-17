@@ -2,31 +2,24 @@
 {% block title %}Device Create{% endblock %}
 {% block head %}
 {{ super() }}
-<style>
-body {
-  min-height: 75rem;
-  padding-top: 4.5rem;
-}
-</style>
 {% endblock %}
 {% block content %}
-<h1>Add New Device</h1>
-
-<form method="POST" action="{{ url_for('add_device') }}">
-  <div class="mb-3">
-    <label for="secret" class="form-label">Device secret key</label>
-    <input type="text" class="form-control" id="secret" name="secret">
-  </div>
-  <div class="mb-3">
-    <label for="device_name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="device_name" name="name">
-  </div>
-  <div class="mb-3">
-    <label for="location" class="form-label">Location</label>
-    <input type="text" class="form-control" id="location" name="location">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <button type="cancel" class="btn btn-primary">Cancel</button>
-</form>
+<div class="d-flex flex-column bg-white p-5 border border-primary rounded align-content-center"  style="margin-top: 30px;">
+  <h1>Add New Device</h1>
+  <form method="POST" action="{{ url_for('add_device') }}">
+    <div class="my-3">
+      <input type="text" class="form-control" placeholder="Device Secret Key" id="secret" name="secret">
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Device Name" id="device_name" name="name">
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Room Name" id="location" name="location">
+    </div>
+    <div class="d-flex flex-row" >
+      <button type="submit" class="btn btn-primary me-1 w-50">Submit</button>
+      <button type="cancel" class="btn btn-primary w-50">Cancel</button>
+    </div>
+  </form>
+</div>
 {% endblock %}
