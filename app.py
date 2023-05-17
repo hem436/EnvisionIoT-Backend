@@ -164,6 +164,7 @@ def add_device():
         device.secret=secret
         device.user_id=user_id
         db.session.add(device)
+        print(device)
         db.session.commit()
         app1=Appliance(name="light1",type="digital",device_id=device.id)
         app2=Appliance(name="light2",type="digital",device_id=device.id)
