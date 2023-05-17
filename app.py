@@ -164,7 +164,6 @@ def add_device():
         device.secret=secret
         device.user_id=user_id
         db.session.add(device)
-        print(device)
         db.session.commit()
         app1=Appliance(name="light1",type="digital",device_id=device.id)
         app2=Appliance(name="light2",type="digital",device_id=device.id)
@@ -175,7 +174,7 @@ def add_device():
         db.session.add(app3)
         db.session.add(app4)
         db.session.commit()
-        return redirect(url_for('details', id=device.id))
+        return redirect(url_for('details', id=device.id,appliances=device.device_appliance))
     except (KeyError):
         # Redisplay the question voting form.
         return render_template('add_device.html', {
