@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <nav class="navbar fixed-top bg-primary navbar-dark z-2">
+    <nav class="navbar fixed-top bg-primary navbar-dark " style="z-index: 3;">
       <div class="container-fluid justify-content-between">
         <div class="d-flex">
           <button
@@ -28,52 +28,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div
-            class="offcanvas offcanvas-top bg-primary text-white z-1"
-            tabindex="0"
-            data-bs-backdrop="false"
-            id="offcanvasTop"
-            aria-labelledby="offcanvasTopLabel"
-            style="height: min-content; top: 55px"
-          >
-            <ul class="nav nav-tabs bg-primary navbar-dark">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#">Dashboard</a>
-              </li>
-              <button type="button" class="btn btn-primary" id="liveToastBtn">
-                Show live toast
-              </button>
-
-              <div class="toast-container position-fixed bottom-0 end-0 p-3 z-3">
-                <div
-                  id="liveToast"
-                  class="toast"
-                  role="alert"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                >
-                  <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="..." />
-                    <strong class="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="toast"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="toast-body">Hello, world! This is a toast message.</div>
-                </div>
-              </div>
-              <li class="nav-item">
-                <a class="nav-link text-white">Disabled</a>
-              </li>
-            </ul>
-          </div>
+          
 
           <a class="navbar-brand align-self-center ms-2" href="#"
             >Envision IOT</a
@@ -127,6 +82,52 @@
         </div>
       </div>
     </nav>
+    <div
+      class="offcanvas offcanvas-top bg-primary text-white"
+      tabindex="0"
+      data-bs-backdrop="false"
+      id="offcanvasTop"
+      aria-labelledby="offcanvasTopLabel"
+      style="height: min-content; top: 55px; z-index: 1;"
+    >
+      <ul class="nav nav-tabs bg-primary navbar-dark">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Dashboard</a>
+        </li>
+        <button type="button" class="btn btn-primary" id="liveToastBtn">
+          Show live toast
+        </button>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3 z-3">
+          <div
+            id="liveToast"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="..." />
+              <strong class="me-auto">Bootstrap</strong>
+              <small>11 mins ago</small>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+          </div>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link text-white">Disabled</a>
+        </li>
+      </ul>
+    </div>
     <div class="block mt-6">
       {% block body %}{% endblock %}
     </div>
