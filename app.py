@@ -156,12 +156,14 @@ def add_device():
     try:
         secret= request.values.get('secret')
         name = request.values.get('name')
+        room_name = request.values.get('room_name')
         user_id = current_user.id
         if len(secret)!=8:
             return render_template('errors.html',error_message= "You must include a room name and device secret key")
         device = Device()
         device.name = name
         device.secret=secret
+        device.room_name=room_name
         device.user_id=user_id
         db.session.add(device)
         db.session.commit()
@@ -174,7 +176,7 @@ def add_device():
         db.session.add(app3)
         db.session.add(app4)
         db.session.commit()
-        return redirect(url_for('details', id=device.id,appliances=device.device_appliance))
+        return redirect(url_for('details', id=device.id))
     except (KeyError):
         # Redisplay the question voting form.
         return render_template('add_device.html', {

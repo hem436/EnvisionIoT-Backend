@@ -22,6 +22,7 @@ class Device(db.Model):
     id = Column(Integer, primary_key=True,autoincrement=True)
     secret=Column(String(8),unique=True,nullable=False)
     name = Column(String(20), nullable=False)
+    room_name= Column(String(50), nullable=False)
     user_id= Column(Integer, ForeignKey('users.id'),nullable=False)
     device_appliance= db.relationship('Appliance', backref='device', lazy=True)
     def __str__(self):
