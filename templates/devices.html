@@ -23,7 +23,7 @@
       </div>
     </div> -->
     <div class="container">
-      <div class="card"">
+      <div class="card ">
           <div class="imgBx">
             {% if "Living" in device.room_name %}  
             <img src="https://img.freepik.com/free-photo/sofa-living-room-with-copy-space_43614-869.jpg">
@@ -39,11 +39,11 @@
                 alt="Living Room Image">
             {% endif %}
               <h4 id="room1">{{ device.room_name }}</h4>
-              <h6>Device name: {{ device.name }}</h6>
+              <h6 >Device name: {{ device.name }}</h6>
           </div>
           <div class="content">
-            <a class="buttons" href="/device/update/{{device.id}}">Rename Room</a>
-            <a class="buttons" href="/details/{{device.id}}">Control Devices</a>
+            <a class="buttons w-100 mt-1" href="/device/update/{{device.id}}">Rename Room</a>
+            <a class="buttons w-100" href="/details/{{device.id}}">Control Devices</a>
           </div>
       </div>
     </div>
