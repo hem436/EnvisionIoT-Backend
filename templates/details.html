@@ -4,52 +4,84 @@
 {{ super() }}
 
 {% endblock %}
-{% block content %}
-<h1>{{ device.name }}</h1>
-<div class="row">
-  <div class="col-md-2 fw-bold">Location:</div>
-  <div class="col">{{ device.location }}</div>
+{% block content %}}
+<div class="d-flex flex-column bg-white p-5 border border-primary rounded align-content-center">
+  <h1 class="text-center"> Device Name: {{ device.name }}</h1>
+  <hr class="hr hr-blurry"/>
+  <div class="container">
+    <div class="row w-75">
+      <div class="col-md-6 ">
+        <p class="fw-bold">Room Name</p>
+      </div>
+      <div class="col-md-6">
+        <p class="fw-bold">: {{ device.room_name }}</p>
+      </div>
+    </div>
+    <div class="row w-75">
+      <div class="col-md-6">
+        <p class="fw-bold"> Number of Appliance</p>
+      </div>
+      <div class="col-md-6">
+        <p class="fw-bold">: {{ device.device_appliance|length }}</p>
+      </div>
+    </div>
+  </div>
+
+  {% if products|length <4 %}
+  <p>
+    <button type="button" class="btn btn-success mt-2 ms-2" data-bs-toggle="modal" data-bs-target="#addAppliance">
+      Update appliances
+    </button>
+  </p>
+  {% endif %}
+
+  <!-- Button trigger modal -->
+  {% if device.device_appliance %}
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th><p class="text-center mb-1">Name</p></th>
+        <th><p class="text-center mb-1">Type</p></th>
+        <th><p class="text-center mb-1">Status</p></th>
+        <th><p class="text-center mb-1">Mode</p></th>
+        <th><p class="text-center mb-1">Time Setting</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for appliance in device.device_appliance %}
+      <tr>
+        <td>{{ appliance.name }}</td>
+        <td>{{ appliance.type }}</td>
+        <td> 
+          <div class="d-flex flex-row justify-content-center">
+            <label class="ms-1 me-2">off</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+              <label>on</label>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex flex-row justify-content-center">
+            <p class="ms-1 me-2">manual</p>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+              <label class="form-check-label" for="flexSwitchCheckDefault">auto</label>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex flex-row justify-content-center">
+            <input type="time">
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No appliances of this device yet.</p>
+  {% endif %}
 </div>
-<div class="row">
-  <div class="col-md-2 fw-bold">Number of Appliance:</div>
-  <div class="col">{{ device.device_appliance|length }}</div>
-</div>
-
-
-{% if products|length <4 %}
-<p>
-  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAppliance">
-    Update appliances
-  </button>
-</p>
-{% endif %}
-
-<!-- Button trigger modal -->
-{% if appliances %}
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Mode</th>
-      <th>Time Setting</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for appliance in appliances %}
-    <tr>
-      <td>{{ appliance.name }}</td>
-      <td>{{ appliance.type }}</td>
-      <td>{{ appliance.value }}</td>
-      <td>{{ appliance.mode }}</td>
-      <td>{{ appliance.mode_time }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% else %}
-<p>No appliances of this device yet.</p>
-{% endif %}
 
 {% endblock %}
