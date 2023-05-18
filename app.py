@@ -140,7 +140,7 @@ def index():
         return render_template('errors.html',)
     return render_template('devices.html', devices=devices)
 
-@app.route('/<int:id>', methods=['GET'])
+@app.route('/details/<int:id>', methods=['GET'])
 def details(id):
     device = Device.query.where(Device.id== id).first()
     appliances = Appliance.query.where('device_id' == id).all()
@@ -182,6 +182,21 @@ def add_device():
         return render_template('add_device.html', {
             'error_message': "You must include a device name, address, and description",
         })
+
+@app.route('/device/update/<int:id>', methods=['GET','POST'])
+def update_device(id):
+    if request.method=='POST':
+        device = Device.query.get(id)
+        if device:
+            device.name = request.values.get('name')
+            device.room_name = request.values.get('room_name')
+            db.session.commit()
+            return redirect(url_for('details', id=device.id))
+        else:
+            return render_template('errors.html',error_message="device not found")
+    else:  
+        device = Device.query.get(id)
+        return render_template('update_device.html', device=device)
 
 
 @app.route('/appliance/<int:id>', methods=['POST'])
