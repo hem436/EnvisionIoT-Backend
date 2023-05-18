@@ -3,7 +3,7 @@
 <button class="add-button">Install</button>
 <span class="offline-notification">Offline</span>
 <!-- Product Features Section -->
-<section class="container">
+
   
 
 <!-- Main Content -->
@@ -22,23 +22,31 @@
         </div>
       </div>
     </div> -->
-    <div class="container col-10">
-      <div class="card" id="square1">
+    <div class="container">
+      <div class="card"">
           <div class="imgBx">
-              <img src="https://img.freepik.com/free-photo/sofa-living-room-with-copy-space_43614-869.jpg"
-                  alt="Living Room Image">
-              <h4 id="room1">{{ device.romm_name }}</h4>
+            {% if "Living" in device.room_name %}  
+            <img src="https://img.freepik.com/free-photo/sofa-living-room-with-copy-space_43614-869.jpg">
+            {% elif "bed" in device.room_name %}
+            <img src="https://st.hzcdn.com/simgs/bd513d7101790ea6_14-3453/home-design.jpg" alt="Bed Room Image">
+            {% elif "Dining" in device.room_name %}
+            <img src="https://media.designcafe.com/wp-content/uploads/2021/09/29221456/dining-room-interior-with-white-marble-top-and-dining-chairs-with-crockery-unit.jpg"
+                alt="Dining Room Image">
+            {% elif "Kitchen" in device.room_name %}
+            <img src="https://img.freepik.com/free-photo/empty-modern-room-with-furniture_23-2149178335.jpg?" alt="Kitchen Image">
+            {% else %}
+            <img src="https://img.freepik.com/premium-vector/living-corner-house-morning_46176-285.jpg"
+                alt="Living Room Image">
+            {% endif %}
+              <h4 id="room1">{{ device.room_name }}</h4>
               <h6>Device name: {{ device.name }}</h6>
           </div>
           <div class="content">
-              <span><img class="appliances" id="light1" alt="" src="static/images/LIGHT_OFF.png"
-                      onmouseover="this.style.cursor='pointer'" onclick="light_switch1()" /></span>
-              <span><img class="appliances" id="fan1" alt="" src="static/images/FAN_OFF.png"
-                      onmouseover="this.style.cursor='pointer'" onclick="fan_switch1()" /></span>
-              <span><img class="appliances" id="socket1" alt="" src="static/images/SOCKET_PLUG_OUT.png"
-                      onmouseover="this.style.cursor='pointer'" onclick="socket_switch1()" /></span>
+            <a class="buttons" href="/device/update/{{device.id}}">Rename Room</a>
+            <a class="buttons" href="/details/{{device.id}}">Control Devices</a>
           </div>
       </div>
+    </div>
 {% endfor %}
 {% else %}
 <p>No devices exist. Select Add new device to add one.</p>
@@ -46,190 +54,6 @@
 
 
 </div>
-</section>
 <link rel="stylesheet" href="style.css">
-<script language="javascript" type="text/javascript">
 
-    function light_switch1() {
-        var img = document.getElementById('light1').src;
-        if (img.indexOf('LIGHT_OFF.png') != -1) {
-            document.getElementById('light1').src = 'static/images/LIGHT_ON.png';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.backgroundColor = 'black';
-            const square1 = document.getElementById('square1');
-            const room1 = document.getElementById('room1');
-            square1.style.backgroundColor = 'black';
-            room1.style.color = 'white';
-        }
-        else {
-            document.getElementById('light1').src = 'static/images/LIGHT_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-            const square1 = document.getElementById('square1');
-            const room1 = document.getElementById('room1');
-            square1.style.backgroundColor = 'white';
-            room1.style.color = 'black';
-        }
-    }
-
-    function fan_switch1() {
-        var img = document.getElementById('fan1').src;
-        if (img.indexOf('FAN_OFF.png') != -1) {
-            document.getElementById('fan1').src = 'static/images/FAN_ON.gif';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.width = '65px';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'black';
-            //room1.style.color = 'white';
-        }
-        else {
-            document.getElementById('fan1').src = 'static/images/FAN_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            //event.target.style.backgroundColor = 'white';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'white';
-            //room1.style.color = 'black';
-        }
-    }
-
-    function socket_switch1() {
-        var img = document.getElementById('socket1').src;
-        if (img.indexOf('SOCKET_PLUG_OUT.png') != -1) {
-            document.getElementById('socket1').src = 'static/images/SOCKET_PLUG_IN.png';
-            //document.body.style.backgroundColor = 'black';
-            //event.target.style.backgroundColor = 'black';
-        }
-        else {
-            document.getElementById('socket1').src = 'static/images/SOCKET_PLUG_OUT.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-        }
-    }
-
-    function light_switch2() {
-        var img = document.getElementById('light2').src;
-        if (img.indexOf('LIGHT_OFF.png') != -1) {
-            document.getElementById('light2').src = 'static/images/LIGHT_ON.png';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.backgroundColor = 'black';
-            const square2 = document.getElementById('square2');
-            const room2 = document.getElementById('room2');
-            square2.style.backgroundColor = 'black';
-            room2.style.color = 'white';
-        }
-        else {
-            document.getElementById('light2').src = 'static/images/LIGHT_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-            const square2 = document.getElementById('square2');
-            const room2 = document.getElementById('room2');
-            square2.style.backgroundColor = 'white';
-            room2.style.color = 'black';
-        }
-    }
-
-    function fan_switch2() {
-        var img = document.getElementById('fan2').src;
-        if (img.indexOf('FAN_OFF.png') != -1) {
-            document.getElementById('fan2').src = 'static/images/FAN_ON.gif';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.width = '65px';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'black';
-            //room1.style.color = 'white';
-        }
-        else {
-            document.getElementById('fan2').src = 'static/images/FAN_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            //event.target.style.backgroundColor = 'white';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'white';
-            //room1.style.color = 'black';
-        }
-    }
-
-    function socket_switch2() {
-        var img = document.getElementById('socket2').src;
-        if (img.indexOf('SOCKET_PLUG_OUT.png') != -1) {
-            document.getElementById('socket2').src = 'static/images/SOCKET_PLUG_IN.png';
-            //document.body.style.backgroundColor = 'black';
-            //event.target.style.backgroundColor = 'black';
-        }
-        else {
-            document.getElementById('socket2').src = 'static/images/SOCKET_PLUG_OUT.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-        }
-    }
-
-
-
-
-
-
-
-
-    function light_switch3() {
-        var img = document.getElementById('light3').src;
-        if (img.indexOf('LIGHT_OFF.png') != -1) {
-            document.getElementById('light3').src = 'static/images/LIGHT_ON.png';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.backgroundColor = 'black';
-            const square3 = document.getElementById('square3');
-            const room3 = document.getElementById('room3');
-            square3.style.backgroundColor = 'black';
-            room3.style.color = 'white';
-        }
-        else {
-            document.getElementById('light3').src = 'static/images/LIGHT_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-            const square3 = document.getElementById('square3');
-            const room3 = document.getElementById('room3');
-            square3.style.backgroundColor = 'white';
-            room3.style.color = 'black';
-        }
-    }
-
-    function fan_switch3() {
-        var img = document.getElementById('fan3').src;
-        if (img.indexOf('FAN_OFF.png') != -1) {
-            document.getElementById('fan3').src = 'static/images/FAN_ON.gif';
-            //document.body.style.backgroundColor = 'black';
-            event.target.style.width = '65px';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'black';
-            //room1.style.color = 'white';
-        }
-        else {
-            document.getElementById('fan3').src = 'static/images/FAN_OFF.png';
-            //document.body.style.backgroundColor = 'white';
-            //event.target.style.backgroundColor = 'white';
-            //const square1 = document.getElementById('square1');
-            //const room1 = document.getElementById('room1');
-            //square1.style.backgroundColor = 'white';
-            //room1.style.color = 'black';
-        }
-    }
-
-    function socket_switch3() {
-        var img = document.getElementById('socket3').src;
-        if (img.indexOf('SOCKET_PLUG_OUT.png') != -1) {
-            document.getElementById('socket3').src = 'static/images/SOCKET_PLUG_IN.png';
-            //document.body.style.backgroundColor = 'black';
-            //event.target.style.backgroundColor = 'black';
-        }
-        else {
-            document.getElementById('socket3').src = 'static/images/SOCKET_PLUG_OUT.png';
-            //document.body.style.backgroundColor = 'white';
-            event.target.style.backgroundColor = 'white';
-        }
-    }
-
-</script>
 {% endblock %}

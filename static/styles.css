@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Playfair+Display:400,400i,700,700i');
+/* @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Playfair+Display:400,400i,700,700i'); */
 
 body {
     font-family: 'Lato';
@@ -14,7 +14,6 @@ body {
 
 header {
     display: flex;
-    /*justify-content: center;*/
     flex-direction: column;
     background: url("/static/images/luca-bravo-272609.webp") no-repeat center center;
     background-size: cover;
@@ -40,7 +39,6 @@ header .hero {
     align-items: center;
     flex-direction: column;
     z-index: 4;
-    /*margin-top: 40px;*/
     min-height: 300px;
     padding: 0 10px;
     text-align: center;
@@ -62,7 +60,6 @@ header .hero p {
 }
 
 header nav {
-    /*float: left;*/
     z-index: 4;
     width: 960px;
     margin: 20px auto;
@@ -72,7 +69,6 @@ header nav {
 }
 
 header nav .logo {
-    /*float: left;*/
     background: url('images/pwa-light.png') no-repeat top left;
     background-size: 100px 37px;
     width: 100px;
@@ -84,10 +80,8 @@ header nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    /*float: left;*/
-    /*width: 82.8125%;*/
+
     margin-right: 0;
-    /*text-align: right;*/
 }
 
 header nav ul li {
@@ -125,44 +119,7 @@ main h2 {
     text-align: center;
 }
 
-main section {
-    margin: 40px 0;
-    min-height: 300px;
-}
 
-section#about {
-    display: flex;
-}
-
-section#about .media-img {
-    margin-right: 20px;
-    /*width: 400px;*/
-    flex: 1;
-}
-
-section#about .media-img img {
-    max-width: 100%;
-    height: auto;
-}
-
-section#about .details {
-    /*font-size: 24px;*/
-    font-family: 'Playfair Display';
-    display: flex;
-    flex-direction: column;
-    /*justify-content: center;*/
-    flex: 2;
-}
-
-section#about .details h2 {
-    text-align: left;
-}
-
-.characteristics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-}
 
 .card {
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -195,9 +152,7 @@ section#about .details h2 {
 }
 
 .add-button {
-  /*position: absolute;*/
-  /*top: 1px;*/
-  /*left: 1px;*/
+
   padding: 1em .5em;
   border: none;
   border-radius: 5px;
@@ -250,7 +205,6 @@ section#about .details h2 {
     header nav {
         width: 320px;
         flex-direction: column;
-        /*justify-content: ;*/
         align-items: center;
     }
 
@@ -267,7 +221,7 @@ section#about .details h2 {
     header nav {
         width: 240px;
     }
-}
+} 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Wix+Madefor+Display:wght@500&display=swap');
 
 * {
@@ -280,8 +234,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #5cd1ff;;
+    background: #16384c;
 }
+
 
 .container {
     position: relative;
@@ -296,10 +251,10 @@ body {
 .container .card {
     position: relative;
     max-width: 300px;
-    height: 150px;
+    height: 200px;
     background: #fff;
-    margin: 30px 10px;
-    padding: 20px 15px;
+    margin: 10px 10px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
@@ -307,7 +262,7 @@ body {
 }
 
 .container .card:hover {
-    height: 240px;
+    height: 320px;
 
 }
 
@@ -318,7 +273,7 @@ body {
     height: 180px;
     top: -60px;
     z-index: 1;
-
+    left: 6%;
 }
 
 .container .card .imgBx img {
@@ -330,7 +285,7 @@ body {
 .container .card .content {
     position: relative;
     margin-top: -140px;
-    padding: 10px 15px;
+    padding: 15px 15px;
     text-align: center;
     color: #111;
     visibility: hidden;
@@ -345,6 +300,38 @@ body {
     transition-delay: 0.3s;
 }
 
+.buttons {
+    position: relative;
+    display: inline-block;
+    padding: 20px 36px;
+    margin: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+}
+
+.buttons:nth-child(2) {
+    background: linear-gradient(90deg, #755bea, #ff72c0)
+}
+
+.buttons:hover {
+    background: linear-gradient(90deg, #55e7fc, #0162c8);
+    padding: 22px 39px;
+    transition: 0.4s;
+}
+
+.buttons:nth-child(2):hover {
+    background: linear-gradient(90deg, #ff72c0, #755bea);
+    padding: 22px 39px;
+    transition: 0.4s;
+}
+
+
 p {
     text-align: left;
 }
@@ -352,25 +339,4 @@ p {
 .appliances {
     width: 50px;
     padding: 15px;
-}
-
-.signupform{
-    align-items: center;
-    position: absolute;
-    top: 25%;
-}
-
-#highlight{
-    position: absolute;
-    font-weight: 700;
-    top: 15%;
-    color:white;
-}
-
-label{
-    color:white;
-}
-
-#hg{
-    color: white;
 }
