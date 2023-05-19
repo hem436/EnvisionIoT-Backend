@@ -143,8 +143,8 @@ def index():
 @app.route('/details/<int:id>', methods=['GET'])
 def details(id):
     device = Device.query.where(Device.id== id).first()
-    appliances = Appliance.query.where('device_id' == id).all()
-    return render_template('details.html', device=device, appliances=appliances)
+    appliances=Appliance.query.where(Appliance.device_id==id).order_by(Appliance.id).all()
+    return render_template('details.html', device=device,appliances=appliances)
 
 @app.route('/create', methods=['GET'])
 def create_device():
@@ -198,6 +198,15 @@ def update_device(id):
         device = Device.query.get(id)
         return render_template('update_device.html', device=device)
 
+@app.route('/device/delete/<int:id>', methods=['GET'])
+def delete_device(id):
+    device = Device.query.get(id)
+    if device:
+        db.session.delete(device)
+        db.session.commit()
+        return redirect(url_for('index'))
+    else:
+        return render_template('errors.html',error_message="device not found")
 
 @app.route('/appliance/<int:id>', methods=['POST'])
 def add_appliance(id):
@@ -220,6 +229,46 @@ def add_appliance(id):
         db.session.add(appliance)
         db.session.commit()
     return redirect(url_for('details', id=id))
+
+@app.route('/change/<int:id>', methods=['POST'])
+def change_appliances(id):
+    try:
+        device=Device.query.get(id)
+        if device:
+            data=dict()
+            appliances=Appliance.query.filter(Appliance.device_id==device.id).order_by(Appliance.id).all()
+            for i in range(1,5):
+                appliance = appliances[i-1]
+                if request.values.get("app"+str(i)+"_mode"):
+                    appliance.mode = 1
+                    if request.values.get("app"+str(i)+"_time"):
+                        appliance.mode_time=request.values.get("app"+str(i)+"_time")
+                    print(appliance.mode_time)
+                    appliance.value = 0
+                    db.session.commit()
+                    data["app"+str(i)+"_mode"]=appliance.mode
+                    data["app"+str(i)+"_value"]=appliance.value
+                    data["app"+str(i)+"_mode_time"]=appliance.mode_time
+                else:
+                    appliance.mode = 0
+                    appliance.mode_time=0
+                    if request.values.get("app"+str(i)+"_status"):
+                        appliance.value = 1
+                    else:
+                        appliance.value = 0
+                    db.session.commit()
+                    data["app"+str(i)+"_mode"]=appliance.mode
+                    data["app"+str(i)+"_value"]=appliance.value
+                    data["app"+str(i)+"_mode_time"]=appliance.mode_time
+            mqtt.publish("envision/"+device.secret+"/request",json.dumps(data))
+            return redirect(url_for('details', id=id))
+        else:
+            return render_template('errors.html',error_message="device not found")
+    except (KeyError):
+        return render_template('errors.html',error_message="change error")
+
+
+    
 
 @app.context_processor
 def utility_processor():

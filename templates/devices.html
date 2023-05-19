@@ -38,14 +38,19 @@
             <img src="https://img.freepik.com/premium-vector/living-corner-house-morning_46176-285.jpg"
                 alt="Living Room Image">
             {% endif %}
+
               <h4 id="room1">{{ device.room_name }}</h4>
               <h6 >Device name: {{ device.name }}</h6>
+
           </div>
           <div class="content">
             <a class="buttons w-100 mt-1" href="/device/update/{{device.id}}">Rename Room</a>
             <a class="buttons w-100" href="/details/{{device.id}}">Control Devices</a>
           </div>
+
       </div>
+      <a href="/device/delete/{{device.id}}"><img src="/static/images/delete.png" width="30px"></a>
+
     </div>
 {% endfor %}
 {% else %}

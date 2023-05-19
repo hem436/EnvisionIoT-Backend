@@ -24,7 +24,7 @@ class Device(db.Model):
     name = Column(String(20), nullable=False)
     room_name= Column(String(50), nullable=False)
     user_id= Column(Integer, ForeignKey('users.id'),nullable=False)
-    device_appliance= db.relationship('Appliance', backref='device', lazy=True)
+    device_appliance= db.relationship('Appliance', backref='device',cascade="all,delete", lazy=True)
     def __str__(self):
         return self.name
 
