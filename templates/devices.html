@@ -1,27 +1,10 @@
 {% extends "index.html" %}
 {% block content %}
-<button class="add-button">Install</button>
-<span class="offline-notification">Offline</span>
-<!-- Product Features Section -->
-
-  
-
 <!-- Main Content -->
 
 {% if True %}
 {% for device in devices %}
 
-  <!-- <div class="row">
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <img src="product1.jpg" class="card-img-top" alt="Product 1">
-        <div class="card-body">
-          <h5 class="card-title">{{ device.name }}</h5>
-          <p class="card-text">Location:{{ device.location }}</p>
-          <button class="btn btn-sm btn-primary" href="{{ url_for('details', id=device.id) }}">Details</button>
-        </div>
-      </div>
-    </div> -->
     <div class="container">
       <div class="card ">
           <div class="imgBx">
