@@ -19,15 +19,15 @@
   </head>
 
   <body>
-    <nav class="navbar fixed-top bg-primary navbar-dark " style="z-index: 3;">
+    <nav class="navbar fixed-top bg-primary navbar-dark z-3 " style="z-index: 3;">
       <div class="container-fluid justify-content-between">
         <div class="d-flex">
           <button
             class="btn"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasTop"
-            aria-controls="offcanvasTop"
+            data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -85,6 +85,24 @@
         </div>
       </div>
     </nav>
+    <div class="offcanvas offcanvas-start  border border-end-1 border-primary " tabindex="1" data-bs-backdrop="false" id="offcanvasExample"  aria-labelledby="offcanvasExamplelabel" style="z-index: 2;" >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" >menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"  ></button>
+      </div>   
+      <div class="offcanvas-body ">
+          <nav class="nav nav-pills  flex-column h-100" >
+            <div class="mb-auto">
+              <a class="nav-link active" aria-current="page"  href="#">Home</a>
+              <a class="nav-link link-dark"  href="#">Device details</a>
+              <a class="nav-link link-dark"  href="/create">Add a device</a>
+              <a class="nav-link link-dark"  href="#">overview</a>
+            </div>
+            <hr class="hr hr-blurry" >
+            <button class="btn btn-outline-primary mb-2" >Logout</button>
+          </nav>
+      </div>
+    </div>
     
       {% block body %}{% endblock %}
     </div>
