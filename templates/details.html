@@ -28,7 +28,7 @@
   </div>
 
   <p>
-    <button type="button" class="btn btn-success mt-2 ms-2"  href="{{device.id}}/appliance/update">
+    <button type="button" class="btn btn-success mt-2 ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href="{{device.id}}/appliance/update">
       Update appliances
     </button>
   </p>
@@ -52,7 +52,7 @@
         <td> 
           <div class="d-flex flex-row justify-content-center">
             <label class="ms-1 me-2">off</label>
-            <div class="form-check form-switch">
+            <div class="form-check form-switch" disabled>
               <input class="form-check-input" type="checkbox" role="switch" {%if appliance.mode%}disabled{%endif%}
               {%if appliance.value %}checked{%endif%} name="app{{loop.index}}_status"/>
               <label>on</label>
@@ -82,6 +82,34 @@
   {% else %}
   <p>No appliances of this device yet.</p>
   {% endif %}
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdroplabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 "  id="Examplemodallabel" >Update Appliance</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="">
+          <div class="my-3">
+            <input type="text" class="form-control" placeholder="Appliance Name">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Appliance Type">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="room name">
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
 $(document).ready(function(){
