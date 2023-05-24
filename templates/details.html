@@ -4,7 +4,7 @@
 {{ super() }}
 
 {% endblock %}
-{% block content %}}
+{% block content %}
 <div class="d-flex flex-column bg-white p-5 border border-primary rounded align-content-center">
   <h1 class="text-center"> Device Name: {{ device.name }}</h1>
   <hr class="hr hr-blurry"/>
@@ -27,11 +27,20 @@
     </div>
   </div>
 
-  <p>
-    <button type="button" class="btn btn-success mt-2 ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"  href="{{device.id}}/appliance/update">
+  <div class="d-flex flex-row w-100">
+    <button type="button" class="btn btn-success mt-2 ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Update appliances
     </button>
-  </p>
+    
+    <button type="button" class="btn btn-success mt-2 ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Update appliances
+    </button>
+    
+    <button type="button" class="btn btn-success mt-2 ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Update appliances
+    </button>
+  </div>
+  
 
   <!-- Button trigger modal -->
   {% if appliances %}
