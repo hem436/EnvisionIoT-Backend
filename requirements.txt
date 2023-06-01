@@ -5,7 +5,6 @@ Flask-Security-Too
 flask_wtf
 flask-cors
 flask-restful
-psycopg2
 python-dotenv
 SQLAlchemy
 flask-mqtt

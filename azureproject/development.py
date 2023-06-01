@@ -30,5 +30,4 @@ MQTT_KEEPALIVE= 5
 MQTT_TLS_ENABLED = False
 MQTT_CLEAN_SESSION= True
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
-
 STATIC_URL = 'static/'
